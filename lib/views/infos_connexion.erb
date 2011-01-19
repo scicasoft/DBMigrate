@@ -1,0 +1,23 @@
+<h1>Informations de connexion</h1>
+<form action="/traitement" method="post">
+  <div id="bases">
+    <div id="base_s">
+      <h2>BD source (<%= @source %>)</h2>
+      <input type="hidden" name="source[sgbd]" value="<%=@source%>" />
+      <% @infos_s.each do |i| %>
+        <% type = i[0] == 'password' ? 'password' : 'text' %>
+        <%= "#{i[0]} : <input type='#{type}' name='source[#{i[0]}]' value='#{i[1]}' />" %><br/>
+      <% end %>
+    </div>
+    <div id="base_d">
+      <h2>BD destination (<%= @destination %>)</h2>
+      <input type="hidden" name="destination[sgbd]" value="<%=@destination%>" />
+      <% @infos_d.each do |i| %>
+        <% type = i[0] == 'password' ? 'password' : 'text' %>
+        <%= "#{i[0]} : <input type='#{type}' name='destination[#{i[0]}]' value='#{i[1]}' />" %><br/>
+      <% end %>
+    </div>
+  </div>
+  <br/>
+  <center><input type="submit" value="VALIDER"/></center>
+</form>

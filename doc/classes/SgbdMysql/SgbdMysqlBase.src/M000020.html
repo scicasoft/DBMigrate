@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>xml_to_db (SgbdMysql::SgbdMysqlBase)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/sgbd_mysql.rb, line 85</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">xml_to_db</span> <span class="ruby-identifier">infos</span>, <span class="ruby-identifier">generer_base</span>
+      <span class="ruby-identifier">doc</span> = <span class="ruby-constant">Nokogiri</span><span class="ruby-operator">::</span><span class="ruby-constant">Slop</span> <span class="ruby-constant">IO</span>.<span class="ruby-identifier">read</span>(<span class="ruby-identifier">infos</span>[<span class="ruby-identifier">:source</span>])
+      <span class="ruby-identifier">infos</span>[<span class="ruby-identifier">:nom_base</span>] <span class="ruby-operator">||=</span> <span class="ruby-identifier">doc</span>.<span class="ruby-identifier">base</span>[<span class="ruby-value str">'nombase'</span>]
+      <span class="ruby-constant">SgbdMysql</span>.<span class="ruby-identifier">infos_connexion</span>[<span class="ruby-identifier">:database</span>] = <span class="ruby-identifier">infos</span>[<span class="ruby-identifier">:nom_base</span>]
+
+      <span class="ruby-ivar">@tables</span> = []
+      <span class="ruby-identifier">doc</span>.<span class="ruby-identifier">base</span>.<span class="ruby-identifier">btable</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">table</span><span class="ruby-operator">|</span>
+        <span class="ruby-ivar">@tables</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">SgbdMysqlTable</span>.<span class="ruby-identifier">new</span>({<span class="ruby-identifier">:slop_table</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">table</span>})
+      <span class="ruby-keyword kw">end</span>
+
+      <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">import_to_db</span>(<span class="ruby-identifier">generer_base</span>)
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

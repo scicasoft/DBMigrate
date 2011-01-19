@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>to_xml_type (SgbdMysql::SgbdMysqlAttribut)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/sgbd_mysql.rb, line 301</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_xml_type</span>
+      <span class="ruby-identifier">type_mysql_to_xml</span> = {
+        <span class="ruby-comment cmt">#les caracteres =&gt; CHAR, VARCHAR, TINYTEXT, TEXT, MEDIUMTEXT, LONGTEXT</span>
+        <span class="ruby-value str">'text'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'texte'</span>,
+        <span class="ruby-value str">'varchar'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'chaine'</span>,
+        <span class="ruby-value str">'char'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'caractere'</span>,
+        <span class="ruby-value str">'tinytext'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'textecourt'</span>,
+        <span class="ruby-value str">'mediumtext'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'textemoyen'</span>,
+        <span class="ruby-value str">'longtext'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'textelong'</span>,
+        <span class="ruby-comment cmt">#les numeriques =&gt; TINYINT, SMALLINT, MEDIUMINT, INT, INTEGER, BIGINT, FLOAT, DOUBLE, REAL, DECIMAL, NUMERIC, BIT</span>
+        <span class="ruby-value str">'tinyint'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'entiercourt'</span>,
+        <span class="ruby-value str">'smallint'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'entierpetit'</span>,
+        <span class="ruby-value str">'mediumint'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'entiermoyen'</span>,
+        <span class="ruby-value str">'int'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'entier'</span>,
+        <span class="ruby-value str">'integer'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'entier'</span>,
+        <span class="ruby-value str">'bigint'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'entierlong'</span>,
+        <span class="ruby-value str">'float'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'reel'</span>,
+        <span class="ruby-value str">'double'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'double'</span>,
+        <span class="ruby-value str">'real'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'double'</span>,
+        <span class="ruby-value str">'decimal'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'decimal'</span>,
+        <span class="ruby-value str">'bit'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'bit'</span>,
+        <span class="ruby-comment cmt">#les dates et heures =&gt; DATE, DATETIME, TIME, YEAR, TIMESTAMP</span>
+        <span class="ruby-value str">'date'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'date'</span>,
+        <span class="ruby-value str">'datetime'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'dateheure'</span>,
+        <span class="ruby-value str">'time'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'heure'</span>,
+        <span class="ruby-value str">'year'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'annee'</span>,
+        <span class="ruby-value str">'timestamp'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'timestamp'</span>, <span class="ruby-comment cmt">#on update CURRENT_TIMESTAMP</span>
+        <span class="ruby-comment cmt">#donnees binaires (BLOB, TINYBLOB, MEDIUMBLOB, LONGBLOB)</span>
+        <span class="ruby-value str">'blob'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'blob'</span>,
+        <span class="ruby-value str">'tinyblob'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'tinyblob'</span>,
+        <span class="ruby-value str">'mediumblob'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'mediumblob'</span>,
+        <span class="ruby-value str">'longblob'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'longblob'</span>,
+        <span class="ruby-comment cmt">#enumerations (ENUM, SET)</span>
+        <span class="ruby-value str">'enum'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'enum'</span>,
+        <span class="ruby-value str">'set'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'set'</span>
+      }
+
+      <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">type_mysql_to_xml</span>[<span class="ruby-identifier">type</span>].<span class="ruby-identifier">nil?</span>
+        <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">type</span> = <span class="ruby-identifier">type_mysql_to_xml</span>[<span class="ruby-identifier">type</span>]
+      <span class="ruby-keyword kw">end</span>
+
+      <span class="ruby-keyword kw">if</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">type</span> <span class="ruby-operator">==</span> <span class="ruby-value str">'entiercourt'</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">taille</span> = <span class="ruby-value str">'1'</span>
+        <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">type</span> = <span class="ruby-value str">'boolean'</span>
+        <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">taille</span> = <span class="ruby-keyword kw">nil</span>
+      <span class="ruby-keyword kw">end</span>
+      
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

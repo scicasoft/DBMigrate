@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>recup_infos_base (lib/fonctions.rb)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/fonctions.rb, line 17</span>
+<span class="ruby-keyword kw">def</span> <span class="ruby-identifier">recup_infos_base</span> <span class="ruby-identifier">base_name</span>
+  <span class="ruby-identifier">doc</span> = <span class="ruby-constant">Nokogiri</span><span class="ruby-operator">::</span><span class="ruby-constant">Slop</span> <span class="ruby-constant">IO</span>.<span class="ruby-identifier">read</span>(<span class="ruby-value str">&quot;infosconnexion.xml&quot;</span>)
+  <span class="ruby-identifier">tab</span> = []
+  <span class="ruby-identifier">doc</span>.<span class="ruby-identifier">infos</span>.<span class="ruby-identifier">sgbd</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">sgbd</span><span class="ruby-operator">|</span>
+    <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">sgbd</span>[<span class="ruby-value str">&quot;name&quot;</span>] <span class="ruby-operator">==</span> <span class="ruby-identifier">base_name</span>
+      <span class="ruby-identifier">sgbd</span>.<span class="ruby-identifier">param</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">p</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">tab</span> <span class="ruby-operator">&lt;&lt;</span> [<span class="ruby-identifier">p</span>[<span class="ruby-value str">&quot;name&quot;</span>], <span class="ruby-identifier">p</span>.<span class="ruby-identifier">content</span>]
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">tab</span>
+<span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

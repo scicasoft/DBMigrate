@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<infos>
+    <sgbd name="mysql" connexion="SgbdMysql::SgbdMysqlBase.new">
+        <param name="host">localhost</param>
+        <param name="port">3506</param>
+        <param name="username">root</param>
+        <param name="password">passer</param>
+        <param name="database"></param>
+    </sgbd>
+    <sgbd name="postgres" connexion="SgbdPostgres::SgbdPostgresBase.new">
+        <param name="host">localhost</param>
+        <param name="port">5432</param>
+        <param name="username">root</param>
+        <param name="password">passer</param>
+        <param name="schema">public</param>
+        <param name="database"></param>
+    </sgbd>
+</infos>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>importer_donnees (SgbdPostgres::SgbdPostgresBase)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/sgbd_postgres.rb, line 169</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">importer_donnees</span> <span class="ruby-identifier">fichier</span>, <span class="ruby-identifier">generer_base</span>
+      <span class="ruby-identifier">doc</span> = <span class="ruby-constant">Nokogiri</span><span class="ruby-operator">::</span><span class="ruby-constant">Slop</span> <span class="ruby-constant">IO</span>.<span class="ruby-identifier">read</span>(<span class="ruby-identifier">fichier</span>)
+      <span class="ruby-identifier">req</span> = <span class="ruby-value str">''</span>
+      <span class="ruby-identifier">doc</span>.<span class="ruby-identifier">base</span>.<span class="ruby-identifier">btable</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">table</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;table #{table['nom']}&quot;</span>
+        <span class="ruby-identifier">reqtab</span> = <span class="ruby-node">&quot;INSERT INTO \&quot;#{table['nom']}\&quot; VALUES \n&quot;</span>
+        <span class="ruby-identifier">tabe</span> = []
+        <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">table</span>[<span class="ruby-value str">'taille'</span>] <span class="ruby-operator">==</span> <span class="ruby-value str">'1'</span>
+          <span class="ruby-identifier">table</span>.<span class="ruby-identifier">enregistrement</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">e</span><span class="ruby-operator">|</span>
+            <span class="ruby-identifier">req1</span> = <span class="ruby-value str">&quot;(&quot;</span>
+            <span class="ruby-identifier">ats</span> = []
+            <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">e</span>.<span class="ruby-identifier">attribut</span>.<span class="ruby-identifier">class</span> <span class="ruby-operator">==</span> <span class="ruby-constant">Nokogiri</span><span class="ruby-operator">::</span><span class="ruby-constant">XML</span><span class="ruby-operator">::</span><span class="ruby-constant">NodeSet</span>
+              <span class="ruby-identifier">e</span>.<span class="ruby-identifier">attribut</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">atr</span><span class="ruby-operator">|</span>
+                <span class="ruby-identifier">ats</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">recup_valeur_pg</span>(<span class="ruby-identifier">atr</span>.<span class="ruby-identifier">content</span>, <span class="ruby-identifier">atr</span>[<span class="ruby-value str">'type'</span>], <span class="ruby-identifier">atr</span>[<span class="ruby-value str">'null'</span>])
+              <span class="ruby-keyword kw">end</span>
+            <span class="ruby-keyword kw">else</span>
+              <span class="ruby-identifier">ats</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">recup_valeur_pg</span>(<span class="ruby-identifier">e</span>.<span class="ruby-identifier">attribut</span>.<span class="ruby-identifier">content</span>, <span class="ruby-identifier">e</span>.<span class="ruby-identifier">attribut</span>[<span class="ruby-value str">'type'</span>], <span class="ruby-identifier">e</span>.<span class="ruby-identifier">attribut</span>[<span class="ruby-value str">'null'</span>])
+            <span class="ruby-keyword kw">end</span>
+            <span class="ruby-identifier">req1</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">ats</span>.<span class="ruby-identifier">join</span>(<span class="ruby-value str">&quot;,&quot;</span>)
+            <span class="ruby-identifier">req1</span> <span class="ruby-operator">+=</span> <span class="ruby-value str">&quot;)&quot;</span>
+            <span class="ruby-identifier">tabe</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">req1</span>
+          <span class="ruby-keyword kw">end</span>
+        <span class="ruby-keyword kw">else</span>
+          <span class="ruby-identifier">e</span> = <span class="ruby-identifier">table</span>.<span class="ruby-identifier">enregistrement</span>
+          <span class="ruby-identifier">req1</span> = <span class="ruby-value str">&quot;(&quot;</span>
+          <span class="ruby-identifier">ats</span> = []
+          <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">e</span>.<span class="ruby-identifier">attribut</span>.<span class="ruby-identifier">class</span> <span class="ruby-operator">==</span> <span class="ruby-constant">Nokogiri</span><span class="ruby-operator">::</span><span class="ruby-constant">XML</span><span class="ruby-operator">::</span><span class="ruby-constant">NodeSet</span>
+            <span class="ruby-identifier">e</span>.<span class="ruby-identifier">attribut</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">atr</span><span class="ruby-operator">|</span>
+              <span class="ruby-identifier">ats</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">recup_valeur_pg</span>(<span class="ruby-identifier">atr</span>.<span class="ruby-identifier">content</span>, <span class="ruby-identifier">atr</span>[<span class="ruby-value str">'type'</span>], <span class="ruby-identifier">atr</span>[<span class="ruby-value str">'null'</span>])
+            <span class="ruby-keyword kw">end</span>
+          <span class="ruby-keyword kw">else</span>
+            <span class="ruby-identifier">ats</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">recup_valeur_pg</span>(<span class="ruby-identifier">e</span>.<span class="ruby-identifier">attribut</span>.<span class="ruby-identifier">content</span>, <span class="ruby-identifier">e</span>.<span class="ruby-identifier">attribut</span>[<span class="ruby-value str">'type'</span>], <span class="ruby-identifier">e</span>.<span class="ruby-identifier">attribut</span>[<span class="ruby-value str">'null'</span>])
+          <span class="ruby-keyword kw">end</span>
+          <span class="ruby-identifier">req1</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">ats</span>.<span class="ruby-identifier">join</span>(<span class="ruby-value str">&quot;,&quot;</span>)
+          <span class="ruby-identifier">req1</span> <span class="ruby-operator">+=</span> <span class="ruby-value str">&quot;)&quot;</span>
+          <span class="ruby-identifier">tabe</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">req1</span>
+        <span class="ruby-keyword kw">end</span>
+        <span class="ruby-identifier">reqtab</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">tabe</span>.<span class="ruby-identifier">join</span>(<span class="ruby-value str">&quot;,\n&quot;</span>)<span class="ruby-operator">+</span><span class="ruby-value str">&quot;;&quot;</span>
+        <span class="ruby-identifier">req</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">reqtab</span><span class="ruby-operator">+</span><span class="ruby-value str">&quot;\n\n&quot;</span>
+        <span class="ruby-identifier">query_pg</span> <span class="ruby-identifier">reqtab</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">generer_base</span>
+      <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">req</span>
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

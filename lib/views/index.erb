@@ -1,0 +1,8 @@
+<h1 style="font-size: 50px">Scica Database Migrate</h1>
+<center style="font-size: 45px">
+  <% @migrations.each do |m| %>
+    <a href="/infos_connexion?source=<%= m[0] %>&destination=<%= m[1] %>">
+      <%=  "#{m[0]} &#8594; #{m[1]}" %> <br/>
+    </a>
+  <% end %>
+</center>

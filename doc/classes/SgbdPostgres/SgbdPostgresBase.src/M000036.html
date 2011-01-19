@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>import_to_db (SgbdPostgres::SgbdPostgresBase)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/sgbd_postgres.rb, line 122</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">import_to_db</span> <span class="ruby-identifier">generer_base</span>
+      <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;CREATION DE LA BASE DE DONNEES #{SgbdPostgres.infos_connexion_pg[:database]}&quot;</span>
+      <span class="ruby-identifier">query_pg</span> <span class="ruby-node">&quot;CREATE DATABASE \&quot;#{SgbdPostgres.infos_connexion_pg[:database]}\&quot;;\n&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">generer_base</span>
+      <span class="ruby-identifier">query</span> = <span class="ruby-node">&quot;CREATE DATABASE \&quot;#{SgbdPostgres.infos_connexion_pg[:database]}\&quot;;\n\n&quot;</span>
+      <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;CONNEXION LA BASE DE DONNEES #{SgbdPostgres.infos_connexion_pg[:database]}&quot;</span>
+      <span class="ruby-identifier">connect_pg</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">generer_base</span>
+      <span class="ruby-ivar">@tables</span>.<span class="ruby-identifier">each</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">table</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;CREATION DE LA TABLE #{table.nom}&quot;</span>
+        <span class="ruby-identifier">query_pg</span> <span class="ruby-identifier">table</span>.<span class="ruby-identifier">to_sql</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">generer_base</span>
+        <span class="ruby-identifier">query</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">table</span>.<span class="ruby-identifier">to_sql</span><span class="ruby-operator">+</span><span class="ruby-value str">&quot;;\n\n&quot;</span>
+      }
+      <span class="ruby-identifier">puts</span> <span class="ruby-value str">&quot;VOTRE BASE DE DONNEES EST CREEE AVEC SUCCES&quot;</span>
+      <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">query</span>
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

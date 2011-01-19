@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>recuperer_tables (SgbdPostgres::SgbdPostgresBase)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/sgbd_postgres.rb, line 68</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">recuperer_tables</span>
+      <span class="ruby-ivar">@tables</span> = []
+      <span class="ruby-keyword kw">for</span> <span class="ruby-identifier">table_name</span> <span class="ruby-keyword kw">in</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">liste_tables</span>
+        <span class="ruby-identifier">requete</span> = <span class="ruby-value str">&quot;SELECT\nINFORMATION_SCHEMA.COLUMNS.COLUMN_NAME,\nINFORMATION_SCHEMA.COLUMNS.DATA_TYPE,\nINFORMATION_SCHEMA.COLUMNS.IS_NULLABLE,\nINFORMATION_SCHEMA.TABLE_CONSTRAINTS.CONSTRAINT_TYPE,\nINFORMATION_SCHEMA.COLUMNS.COLUMN_DEFAULT,\nINFORMATION_SCHEMA.COLUMNS.character_maximum_length,\nINFORMATION_SCHEMA.COLUMNS.numeric_precision\nFROM\nINFORMATION_SCHEMA.COLUMNS\nLEFT OUTER JOIN information_schema.KEY_COLUMN_USAGE\nON INFORMATION_SCHEMA.COLUMNS.TABLE_NAME=information_schema.KEY_COLUMN_USAGE.TABLE_NAME\nAND INFORMATION_SCHEMA.COLUMNS.COLUMN_NAME=information_schema.KEY_COLUMN_USAGE.COLUMN_NAME\nLEFT OUTER JOIN INFORMATION_SCHEMA.TABLE_CONSTRAINTS\nON information_schema.KEY_COLUMN_USAGE.TABLE_NAME=information_schema.TABLE_CONSTRAINTS.TABLE_NAME\nAND information_schema.KEY_COLUMN_USAGE.CONSTRAINT_NAME=information_schema.TABLE_CONSTRAINTS.CONSTRAINT_NAME\nLEFT OUTER JOIN information_schema.REFERENTIAL_CONSTRAINTS\nON information_schema.REFERENTIAL_CONSTRAINTS.CONSTRAINT_NAME=information_schema.KEY_COLUMN_USAGE.CONSTRAINT_NAME\nWHERE\ninformation_schema.COLUMNS.TABLE_NAME='\#{table_name}' and information_schema.COLUMNS.table_catalog='\#{SgbdPostgres.infos_connexion_pg[:database]}'\n&quot;</span>
+        <span class="ruby-identifier">res</span> = <span class="ruby-identifier">query_pg</span>(<span class="ruby-identifier">requete</span>)
+        <span class="ruby-ivar">@tables</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">SgbdPostgresTable</span>.<span class="ruby-identifier">new</span>({<span class="ruby-identifier">:nom</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">table_name</span>, <span class="ruby-identifier">:description</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">res</span>})
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

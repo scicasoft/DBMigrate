@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>recuperer_tables (SgbdMysql::SgbdMysqlBase)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/sgbd_mysql.rb, line 53</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">recuperer_tables</span>
+      <span class="ruby-ivar">@tables</span> = []
+      <span class="ruby-identifier">l_tables</span> = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">liste_tables</span>
+      <span class="ruby-keyword kw">for</span> <span class="ruby-identifier">table_name</span> <span class="ruby-keyword kw">in</span> <span class="ruby-identifier">l_tables</span>
+        <span class="ruby-identifier">res</span> = <span class="ruby-identifier">query</span>(<span class="ruby-node">&quot;desc `#{table_name}`&quot;</span>)
+        <span class="ruby-ivar">@tables</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">SgbdMysqlTable</span>.<span class="ruby-identifier">new</span>({<span class="ruby-identifier">:nom</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">table_name</span>, <span class="ruby-identifier">:description</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">res</span>})
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

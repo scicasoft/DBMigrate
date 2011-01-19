@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>liste_tables (SgbdPostgres::SgbdPostgresBase)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/sgbd_postgres.rb, line 99</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">liste_tables</span>
+      <span class="ruby-identifier">tables</span> = []
+      <span class="ruby-identifier">res</span> = <span class="ruby-identifier">query_pg</span>(<span class="ruby-value str">&quot;SELECT tablename FROM pg_tables WHERE tablename !~ '^pg_' AND tablename !~ '^sql_'&quot;</span>)
+      <span class="ruby-identifier">res</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">row</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">tables</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">row</span>[<span class="ruby-value">0</span>]
+      <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">tables</span>
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

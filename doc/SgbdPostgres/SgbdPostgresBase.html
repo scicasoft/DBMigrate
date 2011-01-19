@@ -1,0 +1,468 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+
+	<title>Class: SgbdPostgres::SgbdPostgresBase</title>
+
+	<link rel="stylesheet" href="../rdoc.css" type="text/css" media="screen" />
+
+	<script src="../js/jquery.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="../js/thickbox-compressed.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="../js/quicksearch.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="../js/darkfish.js" type="text/javascript"
+		charset="utf-8"></script>
+
+</head>
+<body class="class">
+
+	<div id="metadata">
+		<div id="home-metadata">
+			<div id="home-section" class="section">
+        <h3 class="section-header">
+          <a href="../index.html">Home</a>
+          <a href="../index.html#classes">Classes</a>
+          <a href="../index.html#methods">Methods</a>
+        </h3>
+			</div>
+		</div>
+
+		<div id="file-metadata">
+			<div id="file-list-section" class="section">
+				<h3 class="section-header">In Files</h3>
+				<div class="section-body">
+					<ul>
+					
+						<li><a href="../lib/sgbd_postgres_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+							class="thickbox" title="lib/sgbd_postgres.rb">lib/sgbd_postgres.rb</a></li>
+					
+					</ul>
+				</div>
+			</div>
+
+			
+		</div>
+
+		<div id="class-metadata">
+
+			<!-- Parent Class -->
+			
+			<div id="parent-class-section" class="section">
+				<h3 class="section-header">Parent</h3>
+				
+				<p class="link">Object</p>
+				
+			</div>
+			
+
+			<!-- Namespace Contents -->
+			
+
+			<!-- Method Quickref -->
+			
+			<div id="method-list-section" class="section">
+				<h3 class="section-header">Methods</h3>
+				<ul class="link-list">
+					
+					<li><a href="#method-c-new">::new</a></li>
+					
+					<li><a href="#method-i-generer_xml">#generer_xml</a></li>
+					
+					<li><a href="#method-i-liste_base">#liste_base</a></li>
+					
+					<li><a href="#method-i-liste_tables">#liste_tables</a></li>
+					
+					<li><a href="#method-i-recuperer_tables">#recuperer_tables</a></li>
+					
+					<li><a href="#method-i-utiliser_base">#utiliser_base</a></li>
+					
+				</ul>
+			</div>
+			
+
+			<!-- Included Modules -->
+			
+		</div>
+
+		<div id="project-metadata">
+			
+			
+			<div id="fileindex-section" class="section project-section">
+				<h3 class="section-header">Files</h3>
+				<ul>
+				
+					<li class="file"><a href="../LICENSE.html">LICENSE</a></li>
+				
+					<li class="file"><a href="../README.html">README</a></li>
+				
+					<li class="file"><a href="../Rakefile.html">Rakefile</a></li>
+				
+					<li class="file"><a href="../nbproject/private/rake-d_txt.html">rake-d.txt</a></li>
+				
+				</ul>
+			</div>
+			
+
+			<div id="classindex-section" class="section project-section">
+				<h3 class="section-header">Class Index
+					<span class="search-toggle"><img src="../images/find.png"
+						height="16" width="16" alt="[+]"
+						title="show/hide quicksearch" /></span></h3>
+				<form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
+				<fieldset>
+					<legend>Quicksearch</legend>
+					<input type="text" name="quicksearch" value=""
+						class="quicksearch-field" />
+				</fieldset>
+				</form>
+
+				<ul class="link-list">
+				
+					<li><a href="../SgbdMysql.html">SgbdMysql</a></li>
+				
+					<li><a href="../SgbdMysql/SgbdMysqlAttribut.html">SgbdMysql::SgbdMysqlAttribut</a></li>
+				
+					<li><a href="../SgbdMysql/SgbdMysqlBase.html">SgbdMysql::SgbdMysqlBase</a></li>
+				
+					<li><a href="../SgbdMysql/SgbdMysqlTable.html">SgbdMysql::SgbdMysqlTable</a></li>
+				
+					<li><a href="../SgbdPostgres.html">SgbdPostgres</a></li>
+				
+					<li><a href="../SgbdPostgres/SgbdPostgresAttribut.html">SgbdPostgres::SgbdPostgresAttribut</a></li>
+				
+					<li><a href="../SgbdPostgres/SgbdPostgresBase.html">SgbdPostgres::SgbdPostgresBase</a></li>
+				
+					<li><a href="../SgbdPostgres/SgbdPostgresTable.html">SgbdPostgres::SgbdPostgresTable</a></li>
+				
+				</ul>
+				<div id="no-class-search-results" style="display: none;">No matching classes.</div>
+			</div>
+
+			
+		</div>
+	</div>
+
+	<div id="documentation">
+		<h1 class="class">SgbdPostgres::SgbdPostgresBase</h1>
+
+		<div id="description">
+			
+		</div>
+
+		<!-- Constants -->
+		
+
+		<!-- Attributes -->
+		
+		<div id="attribute-method-details" class="method-section section">
+			<h3 class="section-header">Attributes</h3>
+
+			
+			<div id="tables-attribute-method" class="method-detail">
+				<a name="tables"></a>
+				
+				<div class="method-heading attribute-method-heading">
+					<span class="method-name">tables</span><span
+						class="attribute-access-type">[R]</span>
+				</div>
+
+				<div class="method-description">
+				
+				
+				
+				</div>
+			</div>
+			
+		</div>
+		
+
+		<!-- Methods -->
+		
+		<div id="public-class-method-details" class="method-section section">
+			<h3 class="section-header">Public Class Methods</h3>
+
+		
+			<div id="new-method" class="method-detail ">
+				<a name="method-c-new"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">new</span><span
+						class="method-args">(opts = {})</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="new-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/sgbd_postgres.rb, line 18</span>
+18:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">opts</span> = {})
+19:       <span class="ruby-identifier">opts</span>[<span class="ruby-value">:username</span>] <span class="ruby-operator">||=</span> <span class="ruby-value str">'root'</span>
+20:       <span class="ruby-identifier">opts</span>[<span class="ruby-value">:password</span>] <span class="ruby-operator">||=</span> <span class="ruby-value str">''</span>
+21: 
+22:       <span class="ruby-ivar">@infos_connexion</span> = {
+23:         <span class="ruby-value">:username</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">opts</span>[<span class="ruby-value">:username</span>],
+24:         <span class="ruby-value">:password</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">opts</span>[<span class="ruby-value">:password</span>],
+25:         <span class="ruby-value">:host</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">opts</span>[<span class="ruby-value">:host</span>],
+26:         <span class="ruby-value">:port</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">opts</span>[<span class="ruby-value">:port</span>],
+27:         <span class="ruby-value">:database</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">opts</span>[<span class="ruby-value">:database</span>],
+28:         <span class="ruby-value">:socket</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">opts</span>[<span class="ruby-value">:socket</span>]
+29:       }
+30: 
+31:       <span class="ruby-identifier">connect</span>
+32:       <span class="ruby-identifier">recuperer_tables</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">opts</span>[<span class="ruby-value">:database</span>].<span class="ruby-identifier">nil?</span>
+33:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+		</div>
+	
+		<div id="public-instance-method-details" class="method-section section">
+			<h3 class="section-header">Public Instance Methods</h3>
+
+		
+			<div id="generer-xml-method" class="method-detail ">
+				<a name="method-i-generer_xml"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">generer_xml</span><span
+						class="method-args">(fichier)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="generer-xml-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/sgbd_postgres.rb, line 67</span>
+67:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">generer_xml</span> <span class="ruby-identifier">fichier</span>
+68:       <span class="ruby-identifier">f</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">new</span>(<span class="ruby-node">&quot;#{fichier}.xml&quot;</span>,  <span class="ruby-value str">&quot;w+&quot;</span>)
+69:       <span class="ruby-identifier">xm</span> = <span class="ruby-constant">Builder</span><span class="ruby-operator">::</span><span class="ruby-constant">XmlMarkup</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:target=</span><span class="ruby-operator">&gt;</span><span class="ruby-identifier">f</span>, <span class="ruby-value">:indent=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">2</span>)
+70:       <span class="ruby-identifier">xm</span>.<span class="ruby-identifier">instruct!</span>
+71:       <span class="ruby-identifier">xm</span>.<span class="ruby-identifier">base</span>(<span class="ruby-value">:nombase</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@infos_connexion</span>[<span class="ruby-value">:database</span>]) { <span class="ruby-operator">|</span><span class="ruby-identifier">t</span><span class="ruby-operator">|</span>
+72:         <span class="ruby-keyword kw">for</span> <span class="ruby-identifier">table</span> <span class="ruby-keyword kw">in</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">tables</span> <span class="ruby-keyword kw">do</span>
+73:           <span class="ruby-identifier">t</span>.<span class="ruby-identifier">table</span>(<span class="ruby-value">:nomtable</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">table</span>.<span class="ruby-identifier">nom</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">a</span><span class="ruby-operator">|</span>
+74:             <span class="ruby-keyword kw">for</span> <span class="ruby-identifier">att</span> <span class="ruby-keyword kw">in</span> <span class="ruby-identifier">table</span>.<span class="ruby-identifier">attributs</span>
+75:               <span class="ruby-identifier">a</span>.<span class="ruby-identifier">attribut</span>(<span class="ruby-value">:nomattribut</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">att</span>.<span class="ruby-identifier">nom</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
+76:                 <span class="ruby-identifier">i</span>.<span class="ruby-identifier">type</span>(<span class="ruby-identifier">att</span>.<span class="ruby-identifier">type</span>)
+77:                 <span class="ruby-identifier">i</span>.<span class="ruby-identifier">taille</span>(<span class="ruby-identifier">att</span>.<span class="ruby-identifier">taille</span>) <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">att</span>.<span class="ruby-identifier">taille</span>.<span class="ruby-identifier">nil?</span>
+78:                 <span class="ruby-identifier">i</span>.<span class="ruby-identifier">defaut</span>(<span class="ruby-identifier">att</span>.<span class="ruby-identifier">default</span>) <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">att</span>.<span class="ruby-identifier">default</span>.<span class="ruby-identifier">nil?</span>
+79:                 <span class="ruby-identifier">i</span>.<span class="ruby-identifier">listenum</span> <span class="ruby-keyword kw">if</span> (<span class="ruby-identifier">att</span>.<span class="ruby-identifier">type</span>[<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-value">3</span>]<span class="ruby-operator">==</span><span class="ruby-value str">'enum'</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">att</span>.<span class="ruby-identifier">type</span>[<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-value">2</span>] <span class="ruby-operator">==</span> <span class="ruby-value str">'set'</span>)
+80:                 <span class="ruby-identifier">att</span>.<span class="ruby-identifier">primaire</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">i</span>.<span class="ruby-identifier">primare</span>(<span class="ruby-keyword kw">true</span>) <span class="ruby-operator">:</span> <span class="ruby-identifier">i</span>.<span class="ruby-identifier">primare</span>(<span class="ruby-keyword kw">false</span>)
+81:                 <span class="ruby-identifier">att</span>.<span class="ruby-identifier">null</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">i</span>.<span class="ruby-identifier">null</span>(<span class="ruby-keyword kw">true</span>) <span class="ruby-operator">:</span> <span class="ruby-identifier">i</span>.<span class="ruby-identifier">null</span>(<span class="ruby-keyword kw">false</span>)
+82:                 <span class="ruby-identifier">att</span>.<span class="ruby-identifier">autoincrement</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">i</span>.<span class="ruby-identifier">autoincrement</span>(<span class="ruby-keyword kw">true</span>) <span class="ruby-operator">:</span> <span class="ruby-identifier">i</span>.<span class="ruby-identifier">autoincrement</span>(<span class="ruby-keyword kw">false</span>)
+83:               }
+84:             <span class="ruby-keyword kw">end</span>
+85:           }
+86:         <span class="ruby-keyword kw">end</span>
+87:       }
+88:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="liste-base-method" class="method-detail ">
+				<a name="method-i-liste_base"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">liste_base</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="liste-base-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/sgbd_postgres.rb, line 35</span>
+35:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">liste_base</span>
+36:       <span class="ruby-identifier">bases</span> = []
+37:       <span class="ruby-identifier">res</span> = <span class="ruby-identifier">query</span>(<span class="ruby-value str">'show databases'</span>)
+38:       <span class="ruby-identifier">res</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">row</span><span class="ruby-operator">|</span>
+39:         <span class="ruby-identifier">bases</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">row</span>[<span class="ruby-value str">'Database'</span>]
+40:       <span class="ruby-keyword kw">end</span>
+41:       <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">bases</span>
+42:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="liste-tables-method" class="method-detail ">
+				<a name="method-i-liste_tables"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">liste_tables</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="liste-tables-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/sgbd_postgres.rb, line 58</span>
+58:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">liste_tables</span>
+59:       <span class="ruby-identifier">tables</span> = []
+60:       <span class="ruby-identifier">res</span> = <span class="ruby-identifier">query</span>(<span class="ruby-value str">'show tables'</span>)
+61:       <span class="ruby-identifier">res</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">row</span><span class="ruby-operator">|</span>
+62:         <span class="ruby-identifier">tables</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">row</span>[<span class="ruby-node">&quot;Tables_in_#{@infos_connexion[:database]}&quot;</span>]
+63:       <span class="ruby-keyword kw">end</span>
+64:       <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">tables</span>
+65:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="recuperer-tables-method" class="method-detail ">
+				<a name="method-i-recuperer_tables"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">recuperer_tables</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="recuperer-tables-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/sgbd_postgres.rb, line 49</span>
+49:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">recuperer_tables</span>
+50:       <span class="ruby-ivar">@tables</span> = []
+51:       <span class="ruby-identifier">l_tables</span> = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">liste_tables</span>
+52:       <span class="ruby-keyword kw">for</span> <span class="ruby-identifier">table_name</span> <span class="ruby-keyword kw">in</span> <span class="ruby-identifier">l_tables</span>
+53:         <span class="ruby-identifier">res</span> = <span class="ruby-identifier">query</span>(<span class="ruby-node">&quot;desc `#{table_name}`&quot;</span>)
+54:         <span class="ruby-ivar">@tables</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">SgbdMysqlTable</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">table_name</span>, <span class="ruby-identifier">res</span>)
+55:       <span class="ruby-keyword kw">end</span>
+56:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="utiliser-base-method" class="method-detail ">
+				<a name="method-i-utiliser_base"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">utiliser_base</span><span
+						class="method-args">(basename)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="utiliser-base-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/sgbd_postgres.rb, line 44</span>
+44:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">utiliser_base</span> <span class="ruby-identifier">basename</span>
+45:       <span class="ruby-ivar">@infos_connexion</span>[<span class="ruby-value">:database</span>] = <span class="ruby-identifier">basename</span>
+46:       <span class="ruby-identifier">connect</span>
+47:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+		</div>
+	
+
+	</div>
+
+
+	<div id="rdoc-debugging-section-dump" class="debugging-section">
+	
+		<p>Disabled; run with --debug to generate this.</p>
+	
+	</div>
+
+	<div id="validator-badges">
+		<p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+		<p><small>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish
+			Rdoc Generator</a> 1.1.6</small>.</p>
+	</div>
+
+</body>
+</html>
+

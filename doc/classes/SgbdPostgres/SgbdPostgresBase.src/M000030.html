@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>new (SgbdPostgres::SgbdPostgresBase)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/sgbd_postgres.rb, line 30</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">opts</span> = {})
+      (<span class="ruby-identifier">opts</span>[<span class="ruby-identifier">:database</span>] = <span class="ruby-keyword kw">nil</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">opts</span>[<span class="ruby-identifier">:database</span>].<span class="ruby-identifier">empty?</span>) <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">opts</span>[<span class="ruby-identifier">:database</span>].<span class="ruby-identifier">nil?</span>
+      <span class="ruby-identifier">opts</span>[<span class="ruby-identifier">:username</span>] <span class="ruby-operator">||=</span> <span class="ruby-value str">'root'</span>
+      <span class="ruby-identifier">opts</span>[<span class="ruby-identifier">:password</span>] <span class="ruby-operator">||=</span> <span class="ruby-value str">''</span>
+      <span class="ruby-identifier">opts</span>[<span class="ruby-identifier">:port</span>] <span class="ruby-operator">||=</span> <span class="ruby-value">5432</span>
+      <span class="ruby-identifier">opts</span>[<span class="ruby-identifier">:host</span>] <span class="ruby-operator">||=</span> <span class="ruby-value str">'localhost'</span>
+      <span class="ruby-identifier">opts</span>[<span class="ruby-identifier">:database</span>] <span class="ruby-operator">||=</span> <span class="ruby-value str">'postgres'</span>
+      <span class="ruby-identifier">opts</span>[<span class="ruby-identifier">:schema</span>] <span class="ruby-operator">||=</span> <span class="ruby-value str">'public'</span>
+
+      <span class="ruby-constant">SgbdPostgres</span>.<span class="ruby-identifier">infos_connexion_pg</span> = {
+        <span class="ruby-identifier">:username</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">opts</span>[<span class="ruby-identifier">:username</span>],
+        <span class="ruby-identifier">:password</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">opts</span>[<span class="ruby-identifier">:password</span>],
+        <span class="ruby-identifier">:host</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">opts</span>[<span class="ruby-identifier">:host</span>],
+        <span class="ruby-identifier">:port</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">opts</span>[<span class="ruby-identifier">:port</span>].<span class="ruby-identifier">to_i</span>,
+        <span class="ruby-identifier">:database</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">opts</span>[<span class="ruby-identifier">:database</span>],
+        <span class="ruby-identifier">:socket</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">opts</span>[<span class="ruby-identifier">:socket</span>],
+        <span class="ruby-identifier">:schema</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">opts</span>[<span class="ruby-identifier">:schema</span>]
+      }
+
+      <span class="ruby-identifier">connect_pg</span>
+      <span class="ruby-identifier">recuperer_tables</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">opts</span>[<span class="ruby-identifier">:database</span>].<span class="ruby-identifier">nil?</span>
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>
