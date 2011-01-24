@@ -1,3 +1,8 @@
 == ScicaDBM
 
-You should document your project here.
+= lancement
+
+* ouvrir le terminal et se deplacer jusqu'au repertoire /lib
+* ruby main.rb
+* ouvrir le navigateur
+* taper localhost:4567
