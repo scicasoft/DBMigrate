@@ -2,7 +2,7 @@
 
 = lancement
 
-* ouvrir le terminal et se deplacer jusqu'au repertoire /lib
-* ruby main.rb
+* ouvrir le terminal et se deplacer vers le repertoire lib/
+* `ruby main.rb`
 * ouvrir le navigateur
 * taper localhost:4567
