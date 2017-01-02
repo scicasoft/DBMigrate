@@ -3,6 +3,8 @@
 = lancement
 
 * ouvrir le terminal et se deplacer vers le repertoire lib/
-* `ruby main.rb`
+* ruby main.rb
 * ouvrir le navigateur
 * taper localhost:4567
+
+scicasoft, janvier 2011
